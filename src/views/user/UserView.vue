@@ -14,9 +14,6 @@ import { Bell } from "@element-plus/icons-vue";
         >
       </el-breadcrumb>
     </div>
-    <template #toolbar>
-      <el-button :icon="Bell" size="large" />
-    </template>
   </Header>
   <el-card class="box-card mt-10">
     <template #header>
