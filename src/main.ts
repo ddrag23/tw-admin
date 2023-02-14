@@ -8,7 +8,7 @@ import "./assets/main.css";
 import "devextreme/dist/css/dx.light.css";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
-import { fas, faGauge } from "@fortawesome/free-solid-svg-icons";
+import { fas, faGauge, faMoneyBill } from "@fortawesome/free-solid-svg-icons";
 import ElementPlus from "element-plus";
 import "element-plus/dist/index.css";
 import * as ElementPlusIconsVue from "@element-plus/icons-vue";

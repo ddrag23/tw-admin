@@ -20,6 +20,25 @@ const router = createRouter({
           name: "user",
           component: () => import("@/views/user/UserView.vue"),
         },
+        {
+          path: "/transaksi",
+          name: "transaksi",
+          component: () => import("@/views/transaksi/IndexView.vue"),
+          children: [
+            {
+              path: "/transaksi/income",
+              name: "transaksi.income",
+              component: () =>
+                import("@/views/transaksi/income/IncomeView.vue"),
+            },
+            {
+              path: "/transaksi/outgoing",
+              name: "transaksi.outgoing",
+              component: () =>
+                import("@/views/transaksi/outgoing/OutgoingView.vue"),
+            },
+          ],
+        },
       ],
     },
     {
