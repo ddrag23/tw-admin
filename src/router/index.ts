@@ -1,5 +1,5 @@
 import { createRouter, createWebHistory } from "vue-router";
-import HomeView from "../views/HomeView.vue";
+import HomeView from "../views/home/HomeView.vue";
 import AdminLayout from "@/layouts/default.vue";
 
 const router = createRouter({
@@ -13,7 +13,7 @@ const router = createRouter({
         {
           path: "/",
           name: "home",
-          component: () => import("@/views/HomeView.vue"),
+          component: () => import("@/views/home/HomeView.vue"),
         },
         {
           path: "/user",
