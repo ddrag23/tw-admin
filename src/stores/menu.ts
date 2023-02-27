@@ -1,32 +1,27 @@
 import { defineStore } from "pinia";
 
 export const useMenu = defineStore("menu", () => {
-  const mainMenu = [
+  const menu = [
     {
-      name: "home",
-      title: "Dashboard",
-      icon: "fa-solid fa-gauge",
+      path: "/",
+      icon: "HomeFilled",
+      title: "Home",
     },
     {
-      name: "user",
-      title: "Users",
-      icon: "fa-solid fa-users",
-    },
-    {
-      name: "transaksi",
+      path: "/transaksi",
+      icon: "Memo",
       title: "Transaksi",
-      icon: "fa-solid fa-money-bill",
+      sub_menu: [
+        {
+          path: "/transaksi/income",
+          title: "Transaksi Masuk",
+        },
+        {
+          path: "/transaksi/outgoing",
+          title: "Transaksi Keluar",
+        },
+      ],
     },
   ];
-  const transaksiSideMenu = [
-    {
-      name: "transaksi.income",
-      title: "Transaksi Masuk",
-    },
-    {
-      name: "transaksi.outgoing",
-      title: "Transaksi Keluar",
-    },
-  ];
-  return { mainMenu, transaksiSideMenu };
+  return { menu };
 });

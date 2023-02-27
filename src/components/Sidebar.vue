@@ -1,35 +1,58 @@
 <script setup lang="ts">
-import { RouterLink, useRoute } from "vue-router";
+import { useRoute } from "vue-router";
 import { useMenu } from "@/stores/menu";
-
 const route = useRoute();
-const { mainMenu } = useMenu();
-function subIsActive(name: string) {
-  return route.path.split("/")[1] == name;
-}
+const { menu } = useMenu();
 </script>
 <template>
-  <section class="w-1/5 bg-white p-5 h-screen hidden md:block overflow-auto">
-    <h1 class="text-2xl font-bold text-center mt-5 mb-12">TheDashboard</h1>
-    <p class="px-2 text-gray-400 mb-3">Main Menu</p>
-    <nav class="w-full flex flex-col gap-2">
-      <template v-for="(item, index) in mainMenu" :key="index">
-        <RouterLink
-          :to="{ name: item.name }"
-          class="p-2 text-slate-400 w-full rounded-lg"
-          :class="{
-            active: $route.name == item.name || subIsActive(item.name),
-          }"
+  <section>
+    <div class="flex justify-between md:justify-center items-center">
+      <h1
+        class="text-xl md:text-2xl font-bold text-left pl-5 md:pl-0 md:text-center mt-5 mb-5"
+      >
+        TheDashboard
+      </h1>
+      <button
+        class="text-black font-medium text-sm px-2.5 text-center inline-flex items-center mr-2 md:hidden block"
+        @click="$emit('hiddenSidebar', false)"
+      >
+        <font-awesome-icon icon="fa-solid fa-xmark" />
+      </button>
+    </div>
+    <el-menu
+      router
+      default-active="/"
+      active-text-color="rgb(29 78 216)"
+      class="el-menu-vertical-demo"
+    >
+      <template v-for="(item, key) in menu" :key="key">
+        <el-menu-item
+          :index="item.path"
+          v-if="item.sub_menu == undefined"
+          @click="$emit('hiddenSidebar', false)"
         >
-          <font-awesome-icon :icon="item.icon"></font-awesome-icon>
-          <span class="ml-2">{{ item.title }}</span>
-        </RouterLink>
+          <el-icon><component :is="item.icon" /></el-icon>
+          <span>{{ item.title }}</span>
+        </el-menu-item>
+        <el-sub-menu :index="item.path" v-else>
+          <template #title>
+            <el-icon><component :is="item.icon" /></el-icon>
+            <span>{{ item.title }}</span>
+          </template>
+          <template v-for="(subMenu, i) in item.sub_menu" :key="i">
+            <el-menu-item
+              :index="subMenu.path"
+              @click="$emit('hiddenSidebar', false)"
+              >{{ subMenu.title }}</el-menu-item
+            >
+          </template>
+        </el-sub-menu>
       </template>
-    </nav>
+    </el-menu>
   </section>
 </template>
-<style scoped lang="postcss">
-.active {
-  @apply bg-blue-700 text-white;
+<style scoped>
+.el-menu {
+  border-right: none;
 }
 </style>

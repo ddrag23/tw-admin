@@ -13,6 +13,9 @@ const router = createRouter({
         {
           path: "/",
           name: "home",
+          meta: {
+            title: "Home",
+          },
           component: () => import("@/views/home/HomeView.vue"),
         },
         {
@@ -23,6 +26,10 @@ const router = createRouter({
         {
           path: "/transaksi",
           name: "transaksi",
+          meta: {
+            title: "Transaksi",
+            breadcrumb: "Transaction Manajement",
+          },
           component: () => import("@/views/transaksi/IndexView.vue"),
           children: [
             {
