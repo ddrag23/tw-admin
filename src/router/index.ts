@@ -53,6 +53,15 @@ const router = createRouter({
       name: "login",
       component: () => import("@/views/auth/Login.vue"),
     },
+    {
+      path: "/:catchAll(.*)",
+      component: () => import("@/views/error/NotFoundView.vue"),
+    },
+    {
+      path: "/forbidden",
+      name: "forbidden",
+      component: () => import("@/views/error/ForbiddenView.vue"),
+    },
   ],
 });
 
