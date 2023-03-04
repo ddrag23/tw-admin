@@ -5,7 +5,7 @@ const form = reactive({ username: null, password: null });
 </script>
 <template>
   <section class="flex justify-center items-center w-full h-screen">
-    <el-card class="box-card w-1/4">
+    <el-card class="box-card w-full md:w-1/3 mx-2 md:mx-0">
       <p class="text-lg font-bold mt-3">Login to your account</p>
       <p class="text-sm font-semibold mb-5 text-slate-400">
         Welcome back, Select method to login

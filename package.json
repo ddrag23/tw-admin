@@ -1,6 +1,6 @@
 {
-  "name": "the-dashboard",
-  "version": "0.0.0",
+  "name": "tw-admin",
+  "version": "0.1.0",
   "private": true,
   "scripts": {
     "dev": "vite",
