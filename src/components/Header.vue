@@ -1,7 +1,23 @@
 <script setup lang="ts">
-import { Bell } from "@element-plus/icons-vue";
-import { useRoute } from "vue-router";
+import { Bell, UserFilled } from "@element-plus/icons-vue";
+import { useRoute,useRouter } from "vue-router";
 const route = useRoute();
+const router = useRouter()
+const buttons = [
+  {
+    text: "Profil",
+    icon : "fa-solid fa-user",
+    onClick: () => router.push('/')
+  },
+  {
+    text: "Logout",
+    icon : 'fa-solid fa-arrow-right-from-bracket',
+    onClick : () => {
+      localStorage.clear()
+      router.push({name:'login'})
+    }
+  },
+];
 </script>
 <template>
   <div class="flex justify-between items-center">
@@ -9,7 +25,7 @@ const route = useRoute();
       <button
         type="button"
         id="navbar-button"
-        class="text-black font-medium text-sm px-2.5 text-center inline-flex items-center mr-2 md:hidden block"
+        class="text-black font-medium text-sm px-2.5 text-center inline-flex items-center mr-2 md:hidden"
         @click="$emit('toggleSidebar', true)"
       >
         <font-awesome-icon icon="fa-solid fa-bars" class="text-2xl" />
@@ -29,9 +45,24 @@ const route = useRoute();
       </div>
     </div>
 
-    <div class="flex gap-4">
+    <div class="flex">
       <el-button :icon="Bell" size="large" />
-
+      <el-popover placement="bottom" :width="200" trigger="click">
+        <template #reference>
+          <el-button :icon="UserFilled" size="large"></el-button>
+        </template>
+        <div class="flex flex-col g-2">
+          <div
+            class="p-2 border-b border-t flex items-center gap-2 cursor-pointer"
+            v-for="button in buttons"
+            :key="button.text"
+            @click="button.onClick"
+          >
+          <font-awesome-icon :icon="button.icon" />
+            {{ button.text }}
+          </div>
+        </div>
+      </el-popover>
       <slot name="toolbar" />
     </div>
   </div>
