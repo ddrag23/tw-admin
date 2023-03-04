@@ -13,6 +13,8 @@ import {
   faGauge,
   faBars,
   faXmark,
+  faRightFromBracket,
+  faUser,
 } from "@fortawesome/free-solid-svg-icons";
 import ElementPlus from "element-plus";
 import "element-plus/dist/index.css";
@@ -20,7 +22,7 @@ import * as ElementPlusIconsVue from "@element-plus/icons-vue";
 import Header from "@/components/Header.vue";
 import { RouterLink } from "vue-router";
 const app = createApp(App);
-library.add(fas, faGauge, faBars, faXmark);
+library.add(fas, faGauge, faBars, faXmark, faRightFromBracket, faUser);
 
 app.use(createPinia());
 app.use(router);
