@@ -1,7 +1,17 @@
 <script setup lang="ts">
 import { reactive } from "vue";
-import { RouterLink } from "vue-router";
-const form = reactive({ username: null, password: null });
+import { RouterLink,useRouter } from "vue-router";
+import { useAuthStore } from "@/stores/auth";
+
+const state = useAuthStore()
+const form = reactive({ username: 'superadmin', password: 'password' });
+const router = useRouter()
+function login() {
+  state.login(form)
+  if (state.isLogin) {
+    router.push({name:'home'})
+  }
+}
 </script>
 <template>
   <section class="flex justify-center items-center w-full h-screen">
@@ -25,7 +35,7 @@ const form = reactive({ username: null, password: null });
         </el-form-item>
         <el-form-item>
           <el-button type="primary" class="w-full" size="large"
-            >Login</el-button
+            @click="login">Login</el-button
           >
         </el-form-item>
       </el-form>
