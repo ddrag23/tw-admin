@@ -4,7 +4,7 @@ This template should help get you started developing with Vue 3 in Vite.
 
 ## Demo
 
-[Tw Admin Demo](https://tw-admin.cahkoding.my.id)
+[Tw Admin Demo](http://tw-admin.cahkoding.my.id)
 
 ## Recommended IDE Setup
 
